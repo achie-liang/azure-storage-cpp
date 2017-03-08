@@ -113,19 +113,19 @@ namespace azure { namespace storage { namespace core {
 
 #pragma endregion
 
-#ifndef _WIN32
     class http_client_reusable
     {
     public:
-        WASTORAGE_API static std::shared_ptr<web::http::client::http_client> get_http_client(const web::uri& uri);
         WASTORAGE_API static std::shared_ptr<web::http::client::http_client> get_http_client(const web::uri& uri, const web::http::client::http_client_config& config);
 
     private:
-        static const boost::asio::io_service& s_service;
+        #ifndef _WIN32
+        static const crossplat::threadpool& s_threadpool;
+        #endif
+
         WASTORAGE_API static std::map<utility::string_t, std::shared_ptr<web::http::client::http_client>> s_http_clients;
         WASTORAGE_API static std::mutex s_mutex;
     };
-#endif
 
 }}} // namespace azure::storage::core
 
