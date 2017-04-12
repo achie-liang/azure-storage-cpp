@@ -112,7 +112,7 @@ namespace azure { namespace storage { namespace core {
     }
 
 #pragma endregion
-
+    /*
 #ifndef _WIN32
     class http_client_reusable
     {
@@ -126,7 +126,7 @@ namespace azure { namespace storage { namespace core {
         WASTORAGE_API static std::mutex s_mutex;
     };
 #endif
-
+    */
 }}} // namespace azure::storage::core
 
 #pragma pop_macro("max")
